@@ -1,0 +1,1080 @@
+{
+	"info": {
+		"_postman_id": "b9142c6b-cd85-4b4f-85cc-fa829452d23f",
+		"name": "AlkemyDisney",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"unity.matias@gmail.com\",\r\n    \"password\": \"Pass712!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setEnvironmentVariable(\"token\", JSON.parse(responseBody).jwt);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"unity.matias@gmail.com\",\r\n    \"password\": \"Pass712!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Init",
+			"item": [
+				{
+					"name": "The Lion King",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Bearer {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"image\": \"the-lion-king-photo.png\",\r\n\t\"title\": \"The Lion King\",\r\n\t\"creationDate\": \"1994-07-07\",\r\n\t\"rating\": 4.6,\r\n\t\"characters\": [\r\n\t\t{\r\n\t\t\t\"image\": \"simba-photo.jpg\",\r\n\t\t\t\"name\": \"Simba\",\r\n\t\t\t\"age\": 2,\r\n\t\t\t\"weight\": 32,\r\n\t\t\t\"story\": \"Simba's story\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"image\": \"scar-photo.png\",\r\n\t\t\t\"name\": \"Scar\",\r\n\t\t\t\"age\": 8,\r\n\t\t\t\"weight\": 110,\r\n\t\t\t\"story\": \"Scar's story\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"image\": \"mufasa-photo.png\",\r\n\t\t\t\"name\": \"Mufasa\",\r\n\t\t\t\"age\": 7,\r\n\t\t\t\"weight\": 120,\r\n\t\t\t\"story\": \"Mufasa's story\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"image\": \"nala-photo.png\",\r\n\t\t\t\"name\": \"Nala\",\r\n\t\t\t\"age\": 6,\r\n\t\t\t\"weight\": 90,\r\n\t\t\t\"story\": \"Nala's story\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"image\": \"zazu-photo.png\",\r\n\t\t\t\"name\": \"Zazu\",\r\n\t\t\t\"age\": 4,\r\n\t\t\t\"weight\": 0.5,\r\n\t\t\t\"story\": \"Zazu's story\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"image\": \"timon-photo.png\",\r\n\t\t\t\"name\": \"Timon\",\r\n\t\t\t\"age\": 8,\r\n\t\t\t\"weight\": 0.7,\r\n\t\t\t\"story\": \"Timon's story\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"image\": \"rafiki-photo.png\",\r\n\t\t\t\"name\": \"Rafiki\",\r\n\t\t\t\"age\": 40,\r\n\t\t\t\"weight\": 36,\r\n\t\t\t\"story\": \"Rafiki's story\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"image\": \"pumba-photo.png\",\r\n\t\t\t\"name\": \"Pumba\",\r\n\t\t\t\"age\": 5,\r\n\t\t\t\"weight\": 90,\r\n\t\t\t\"story\": \"Pumba's story\"\r\n\t\t}\r\n\t],\r\n\t\"genres\": [\r\n\t\t{\r\n\t\t\t\"name\": \"Infantil\",\r\n\t\t\t\"image\": \"infantil-photo.png\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"name\": \"Musical\",\r\n\t\t\t\"image\": \"musical-photo.png\"\r\n\t\t}\r\n\t]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/movies",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lilo y Stitch",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Bearer {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"image\": \"lilo-y-stitch-photo.png\",\r\n\t\"title\": \"Lilo y Stitch\",\r\n\t\"creationDate\": \"2002-07-06\",\r\n\t\"rating\": 4.4,\r\n\t\"characters\": [\r\n\t\t{\r\n\t\t\t\"image\": \"stitch-photo.jpg\",\r\n\t\t\t\"name\": \"Stitch\",\r\n\t\t\t\"age\": 1,\r\n\t\t\t\"weight\": 22.6,\r\n\t\t\t\"story\": \"Stitch's story\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"image\": \"lilo-pelekai-photo.png\",\r\n\t\t\t\"name\": \"Lilo Pelekai\",\r\n\t\t\t\"age\": 6,\r\n\t\t\t\"weight\": 20.5,\r\n\t\t\t\"story\": \"Lilo Pelekai's story\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"image\": \"nani-pelekai-photo.png\",\r\n\t\t\t\"name\": \"Nani Pelekai\",\r\n\t\t\t\"age\": 19,\r\n\t\t\t\"weight\": 55,\r\n\t\t\t\"story\": \"Nani Pelekai's story\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"image\": \"pleakley-photo.png\",\r\n\t\t\t\"name\": \"Pleakley\",\r\n\t\t\t\"age\": 28,\r\n\t\t\t\"weight\": 59,\r\n\t\t\t\"story\": \"Pleakley's story\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"image\": \"jumba-photo.png\",\r\n\t\t\t\"name\": \"Jumba\",\r\n\t\t\t\"age\": 27,\r\n\t\t\t\"weight\": 95,\r\n\t\t\t\"story\": \"Jumba's story\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"image\": \"gantu-photo.png\",\r\n\t\t\t\"name\": \"Gantu\",\r\n\t\t\t\"age\": 32,\r\n\t\t\t\"weight\": 135,\r\n\t\t\t\"story\": \"Gantu's story\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"image\": \"david-kawena-photo.png\",\r\n\t\t\t\"name\": \"David Kawena\",\r\n\t\t\t\"age\": 22,\r\n\t\t\t\"weight\": 74,\r\n\t\t\t\"story\": \"David Kawena's story\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"image\": \"cobra-bubbles-photo.png\",\r\n\t\t\t\"name\": \"Cobra Bubbles\",\r\n\t\t\t\"age\": 48,\r\n\t\t\t\"weight\": 92,\r\n\t\t\t\"story\": \"Cobra Bubbles's story\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"image\": \"mertle-edmonds-photo.png\",\r\n\t\t\t\"name\": \"Mertle Edmonds\",\r\n\t\t\t\"age\": 6,\r\n\t\t\t\"weight\": 19.5,\r\n\t\t\t\"story\": \"Mertle Edmonds's story\"\r\n\t\t}\r\n\t],\r\n\t\"genres\": [\r\n\t\t{\r\n\t\t\t\"name\": \"Infantil\",\r\n\t\t\t\"image\": \"infantil-photo.png\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"name\": \"Comedia\",\r\n\t\t\t\"image\": \"comedia-photo.png\"\r\n\t\t}\r\n\t]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/movies",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Zootopia",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Bearer {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"image\": \"zootopia-photo.png\",\r\n    \"title\": \"Zootopia\",\r\n    \"creationDate\": \"2016-03-17\",\r\n    \"rating\": 4.5,\r\n    \"characters\": [\r\n        {\r\n            \"image\": \"nick-wilde-photo.jpg\",\r\n            \"name\": \"Nick Wilde\",\r\n            \"age\": 32,\r\n            \"weight\": 36,\r\n            \"story\": \"Nick Wilde's story\"\r\n        },\r\n        {\r\n            \"image\": \"judy-hopps-photo.png\",\r\n            \"name\": \"Judy Hopps\",\r\n            \"age\": 29,\r\n            \"weight\": 14.9,\r\n            \"story\": \"Judy Hopps's story\"\r\n        }\r\n    ],\r\n    \"genres\": [\r\n        {\r\n            \"name\": \"Infantil\",\r\n            \"image\": \"infantil-photo.png\"\r\n        },\r\n        {\r\n            \"name\": \"Comedia\",\r\n            \"image\": \"comedia-photo.png\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/movies",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Character",
+			"item": [
+				{
+					"name": "GetAll",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Bearer {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/characters/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"characters",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setEnvironmentVariable(\"characterId\", JSON.parse(responseBody).id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Bearer {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/characters/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"characters",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setEnvironmentVariable(\"characterId\", JSON.parse(responseBody).id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Bearer {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"image\": \"dominic-toretto-photo.png\",\r\n    \"name\": \"Dominic Toretttttto\",\r\n    \"age\": \"27\",\r\n    \"weight\": \"98\",\r\n    \"story\": \"Dominic Toretto es un personaje de ficción protagonista de la saga cinematográfica The Fast and the Furious\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/characters",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"characters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Bearer {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"id\": {{characterId}},\r\n    \"image\": \"dominic-toretto-photo.png\",\r\n    \"name\": \"Dominic Toretto\",\r\n    \"age\": \"27\",\r\n    \"weight\": \"98\",\r\n    \"story\": \"Dominic Toretto is a fictional character and one of the main protagonists of the Fast & Furious franchise\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/characters",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"characters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Bearer {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/characters/{{characterId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"characters",
+								"{{characterId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetByFilters",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Bearer {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/characters?age=8",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"characters"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Simba",
+									"disabled": true
+								},
+								{
+									"key": "age",
+									"value": "8"
+								},
+								{
+									"key": "movies",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Genre",
+			"item": [
+				{
+					"name": "GetAll",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Bearer {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/genres/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"genres",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setEnvironmentVariable(\"genreId\", JSON.parse(responseBody).id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Bearer {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/genres/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"genres",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setEnvironmentVariable(\"genreId\", JSON.parse(responseBody).id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Bearer {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Acccccion\",\r\n    \"image\": \"action-image.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/genres",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"genres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Bearer {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": {{genreId}},\r\n    \"name\": \"Accion\",\r\n    \"image\": \"action-image.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/genres",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"genres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Bearer {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/genres/{{genreId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"genres",
+								"{{genreId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movie",
+			"item": [
+				{
+					"name": "GetAll",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Bearer {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/movies/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movies",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setEnvironmentVariable(\"movieId\", JSON.parse(responseBody).id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Bearer {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/movies/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setEnvironmentVariable(\"movieId\", JSON.parse(responseBody).id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Bearer {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"image\": \"mad-max-photo.png\",\r\n    \"title\": \"Mad Max\",\r\n    \"creationDate\": \"2015-05-14\",\r\n    \"rating\": 4.6,\r\n    \"characters\": [\r\n        {\r\n            \"image\": \"furiosa-photo.png\",\r\n            \"name\": \"Furiosa\",\r\n            \"age\": \"30\",\r\n            \"weight\": \"55\",\r\n            \"story\": \"Furiosa's story\"\r\n        }\r\n    ],\r\n    \"genres\": [\r\n        {\r\n            \"name\": \"Accion\",\r\n            \"image\": \"accion-photo.png\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/movies",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Bearer {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": {{movieId}},\r\n    \"image\": \"mad-max-photo.png\",\r\n    \"title\": \"Mad Max: Furia en el Camino\",\r\n    \"creationDate\": \"2015-05-14\",\r\n    \"rating\": 4.8\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/movies",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Bearer {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/movies/{{movieId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movies",
+								"{{movieId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetByFilters",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Bearer {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/movies?genres=1&order=DESC",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movies"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Zootopia",
+									"disabled": true
+								},
+								{
+									"key": "genres",
+									"value": "1"
+								},
+								{
+									"key": "order",
+									"value": "DESC"
+								},
+								{
+									"key": "order",
+									"value": "ASC",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddCharacter",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Bearer {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/movies/1/character/10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movies",
+								"1",
+								"character",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RemoveCharacter",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Bearer {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/movies/1/character/10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movies",
+								"1",
+								"character",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddGenre",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Bearer {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/movies/1/genre/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movies",
+								"1",
+								"genre",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RemoveGenre",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Bearer {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/movies/1/genre/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movies",
+								"1",
+								"genre",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
