@@ -14,6 +14,7 @@ import com.alkemy.disney.repository.specifications.MovieSpecification;
 import com.alkemy.disney.validator.DtoValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.HashSet;
@@ -21,6 +22,7 @@ import java.util.List;
 import java.util.Set;
 
 @Service
+@Transactional
 public class MovieService {
 
     @Autowired
@@ -54,7 +56,7 @@ public class MovieService {
     }
 
     // Creation
-    public void saveMovie(MovieDto movieDto) {
+    public MovieDto saveMovie(MovieDto movieDto) {
         if (dtoValidator.movieDtoIsValid(movieDto)) {
             MovieModel movie = movieMapper.toMovieModel(movieDto);
             Set<CharacterModel> characters = movie.getCharacters();
@@ -64,6 +66,7 @@ public class MovieService {
             movie = movieRepository.save(movie);
             assignExistingCharacters(characterFilter(characters, true), movie.getId());
             assignExistingGenres(genreFilter(genres, true), movie.getId());
+            return movieMapper.toMovieDto(movie);
         } else {
             throw new MovieException(ExceptionMsg.DTO_WRONG_DATA);
         }
@@ -97,8 +100,10 @@ public class MovieService {
         Set<GenreModel> res = new HashSet<>();
         for (GenreModel genre : genres) {
             if (genre.getId() == null) {
-                if (!existing)
+                if (!existing && genreRepository.findByName(genre.getName()).isEmpty())
                     res.add(genre);
+                else if (existing && !genreRepository.findByName(genre.getName()).isEmpty())
+                    res.add(genreRepository.findByName(genre.getName()).get(0));
             } else {
                 if (genreRepository.existsById(genre.getId())) {
                     if (existing)

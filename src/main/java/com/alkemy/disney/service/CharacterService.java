@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Set;
 
 @Service
+@Transactional
 public class CharacterService {
 
     @Autowired
@@ -42,7 +43,6 @@ public class CharacterService {
         return characterMapper.toListCharacterDtoMinified(characters);
     }
 
-    @Transactional
     public CharacterDto saveCharacter(CharacterDto characterDto) {
         if (dtoValidator.characterDtoIsValid(characterDto)) {
             CharacterModel character = characterMapper.toCharacterModel(characterDto);
@@ -53,7 +53,6 @@ public class CharacterService {
         }
     }
 
-    @Transactional
     public CharacterDto updateCharacter(CharacterDto characterDto) {
         if (characterRepository.existsById(characterDto.getId())){
             if (dtoValidator.characterDtoIsValid(characterDto)) {

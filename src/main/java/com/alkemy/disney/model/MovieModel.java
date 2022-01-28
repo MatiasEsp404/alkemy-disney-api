@@ -35,14 +35,6 @@ public class MovieModel {
     private Date creationDate;
     private Float rating;
 
-    // Movies engloba a Characters -> Cuando creo una pelicula puedo pasarle una
-    // lista de
-    // personajes y se va a crear la relación de ManyToMany pero cuando creo un
-    // personaje
-    // no le voy a poder pasar una lista de peliculas para que lo cree.
-    // Esto pasa porque quien toma el ownership de la relación es la pelicula.
-//    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-//    @ManyToMany()
     @ManyToMany(fetch = FetchType.LAZY, cascade = {
             CascadeType.DETACH,
             CascadeType.MERGE,
@@ -54,10 +46,7 @@ public class MovieModel {
             inverseJoinColumns = @JoinColumn(name = "character_id"))
     Set<CharacterModel> characters = new HashSet<>();
 
-    // Una pelicula o serie puede tener muchos generos.
-    // Ej: La familia de mi novia -> Comedia / Romance
 //    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-//    @ManyToMany()
     @ManyToMany(fetch = FetchType.LAZY, cascade = {
             CascadeType.DETACH,
             CascadeType.MERGE,

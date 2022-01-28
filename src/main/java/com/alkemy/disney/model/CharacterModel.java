@@ -34,9 +34,6 @@ public class CharacterModel {
     private Float weight;
     private String story;
 
-//    @ManyToMany(mappedBy = "characters", cascade = CascadeType.ALL)
-//    @ManyToMany(mappedBy = "characters")
-//    @ManyToMany(mappedBy = "characters", fetch = FetchType.LAZY)
     @ManyToMany(mappedBy = "characters", fetch = FetchType.LAZY, cascade = {
             CascadeType.DETACH,
             CascadeType.MERGE,

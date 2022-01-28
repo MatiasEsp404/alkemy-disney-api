@@ -25,12 +25,10 @@ public class GenreModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column(unique = true)
     private String name;
     private String image;
 
-//    @ManyToMany(mappedBy = "genres", cascade = CascadeType.ALL)
-//    @ManyToMany(mappedBy = "genres")
     @ManyToMany(mappedBy = "genres", fetch = FetchType.LAZY, cascade = {
             CascadeType.DETACH,
             CascadeType.MERGE,
