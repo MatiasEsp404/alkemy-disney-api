@@ -1,0 +1,44 @@
+Hola! Soy Matías Espínola. Quiero comentar un error que 
+encontré en la CONSIGNA del ejercicio y como lo solucioné.
+
+El punto 3 dice: 
+El listado deberá mostrar:
+* Imagen
+* Nombre
+(NO MENCIONA EL ID). 
+
+Podría haberlo respetado pero ¿cómo podría el frontend hacer 
+el update, el delete y el getById sin el id del personaje?
+
+Podría haber hecho que todo el sistema funcione con el nombre
+del personaje (findByName) haciendo que estos sean unicos pero
+eso hubiese creado muchos problemas. Me explico: 
+
+Las entidades personaje (character) tienen PESO, EDAD E HISTORIA
+la cual puede (y debe) variar entre peliculas. 
+ie: no es lo mismo la edad, el peso y la historia de Simba en 
+el Rey Leon 1 (cuando era un leoncito bebe) que en el Rey Leon 2.
+En este caso se deberían crear 2 entidades personaje para Simba.
+
+En conclusión: El sistema no puede funcionar con nombres unicos 
+porque puede surgir la necesidad de crear varias entidades
+personaje con el mismo nombre pero con diferentes peso, edad e 
+historia. 
+
+Otra opción era hacerme el distraido y hacer lo que me dijeron que 
+haga "al pie de la letra" (siendo consciente de este error pero 
+ignorándolo). Sin embargo, esto hubiese incumplido el objetivo
+principal del ejercicio:
+
+"OBJETIVO:
+Desarrollar una API para explorar el mundo de Disney, la cual 
+permitirá conocer y modificar los personajes que lo componen y 
+entender en qué películas estos participaron. Por otro lado, DEBERÁ
+EXPONER LA INFORMACIÓN PARA QUE CUALQUIER FRONTEND PUEDA CONSUMIRLA"
+
+Dicho de otra forma: Si en el punto 3 no hubiese incluido el ID, el 
+sistema no podría ser utilizado desde el frontend.
+Es por eso en mi ejercicio el punto 3 entrega también el ID del 
+personaje. 
+
+Eso es todo. Muchas gracias por leerme. Un saludo! 
